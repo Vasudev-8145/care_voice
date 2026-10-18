@@ -1,0 +1,109 @@
+
+
+# ============USER CREATION ================== #
+
+# api call for creating user
+###
+POST http://127.0.0.1:8000/medivoice/register/
+Content-Type: application/json
+
+{
+    "username":"Tovino",
+    "first_name":"Tovino",
+    "last_name":"Thomas",
+    "email":"tovino@gmail.com",
+    "password":"tovino123"
+}
+
+# =============== COMPLAINT CREATION,LISTING ============= #
+
+# api call for listing all complaints
+###
+GET http://127.0.0.1:8000/medivoice/complaint/
+Accept: application/json
+Authorization: Basic Mohanlal:mohanlal123
+
+# api call for creating complaints
+###
+POST http://127.0.0.1:8000/medivoice/complaint/
+Content-Type: application/json
+Authorization: Basic Tovino:tovino123
+
+{
+    "title":"sanitizers",
+    "description":"need sanitizers on hospital",
+    "complaint_type":"EQUIPMENT",
+    "department":"managment",
+    "priority":"MEDIUM",
+    "status":"IN PROGRESS"
+}
+
+# =============== COMPLAINT RETRIEVE,UPDATE,DELETE ============= #
+
+
+# api call for listing one complaint
+###
+GET http://127.0.0.1:8000/medivoice/complaint/1/
+Accept: application/json
+Authorization: Basic Mohanlal:mohanlal123
+
+# api call for updating one complaint details
+###
+PUT http://127.0.0.1:8000/medivoice/complaint/1/
+Content-Type: application/json
+Authorization: Basic Mohanlal:mohanlal123
+
+{
+  "id": 1,
+  "owner": "Mohanlal",
+  "title": "waste",
+  "description": "there are waste near the hospital",
+  "complaint_type": "CLEANLINESS",
+  "department": "sweepers",
+  "priority": "CRITICAL",
+  "status": "RESOLVED",
+  "reported_date": "2026-10-17"
+}
+
+# api call for deleting one complaint details
+###
+DELETE http://127.0.0.1:8000/medivoice/complaint/4/
+Accept: application/json
+Authorization: Basic Nivin_Pauly:nivinpauly123
+
+# =============== COMPLAINT SUMMARYS ============= #
+
+
+# api call for listing unresolved complaint
+###
+GET http://127.0.0.1:8000/medivoice/complaint/unresolved/
+Accept: application/json
+Authorization: Basic Mohanlal:mohanlal123
+
+# api call for listing count of complaints
+###
+GET http://127.0.0.1:8000/medivoice/complaint/count/
+Accept: application/json
+Authorization: Basic Mohanlal:mohanlal123
+
+# api call for listing high,critical complaint
+###
+GET http://127.0.0.1:8000/medivoice/complaint/priority/
+Accept: application/json
+Authorization: Basic Mohanlal:mohanlal123
+
+
+# =============== COMPLAINT SUMMARYS ============= #
+
+
+# api call for filtering
+###
+GET http://127.0.0.1:8000/medivoice/complaint/filter/?priority=critical&status=resolved
+Accept: application/json
+Authorization: Basic Mohanlal:mohanlal123
+
+# api call for searching
+###
+GET http://127.0.0.1:8000/medivoice/complaint/search/?title=que in billing&description=there is a long que in the billing area
+Accept: application/json
+Authorization: Basic Mohanlal:mohanlal123
